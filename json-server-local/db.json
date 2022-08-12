@@ -1,0 +1,48 @@
+{
+    "users": [
+        {
+            "email": "admin@mail.com",
+            "password": "$2a$10$NcqZhDfM.h/Knlasn5djT.e514sqotWmUsBYdq/AfoQGZtRTfiY72",
+            "id": 1,
+            "role": "CompanyAdmin"
+        }
+    ],
+    "companies": [
+        {
+            "id": 1,
+            "name": "Smartbyte"
+        }
+    ],
+    "vacancies": [
+        {
+            "id": 1,
+            "functionTitle": "IIOT Software Engineer",
+            "jobDescriptionTitle": "Specifiek zijn we op zoek naar een: IIOT Software Engineer",
+            "jobDescriptionContent": "Ons groeiend IIoT team heeft de opdracht om onze machines nog slimmer te maken door handig gebruik te maken van de beschikbare data.",
+            "profileContent": "Je behaalde een bachelor of master in toegepaste informatica of computer science, of je hebt gelijkwaardige ervaring opgebouwd.",
+            "offerContent": "Een uitdagende en afwisselende functie in een hoogtechnologische werkomgeving",
+            "author": "Davy Jans",
+            "editor": "Davy Jans",
+            "publishDate": "11/08/2022",
+            "otherContent": "",
+            "companyId": 1,
+            "statusId": 1,
+            "authorId": 1
+        },
+        {
+            "id": 2,
+            "functionTitle": "IT Manager",
+            "jobDescriptionTitle": "Specifiek zijn we op zoek naar een: IIOT Software Engineer",
+            "jobDescriptionContent": "Ons groeiend IIoT team heeft de opdracht om onze machines nog slimmer te maken door handig gebruik te maken van de beschikbare data.",
+            "profileContent": "Je behaalde een bachelor of master in toegepaste informatica of computer science, of je hebt gelijkwaardige ervaring opgebouwd.",
+            "offerContent": "Een uitdagende en afwisselende functie in een hoogtechnologische werkomgeving",
+            "author": "Davy Jans",
+            "editor": "Davy Jans",
+            "publishDate": "11/08/2022",
+            "otherContent": "",
+            "statusId": 1,
+            "authorId": 1,
+            "companyId": 1
+        }
+    ]
+}
