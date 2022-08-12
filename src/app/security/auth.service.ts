@@ -53,7 +53,7 @@ export class AuthService {
 
 
   authenticate(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>('http://localhost:3000/login', user);
+    return this.httpClient.post<UserResponse>('https://localhost:44373/users/authenticate', user);
   }
 
   register(user: User): Observable<UserResponse> {
