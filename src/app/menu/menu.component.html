@@ -1,48 +1,52 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/">WorkAHolic</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">WorkAHolic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link" routerLink="/vacancies">Vacatures <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link" routerLink="/companies">Bedrijven <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
 
-            <li *ngIf="authService.isCompanyAdmin()" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Company Admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/admin/status">beheer uw vacatures</a>
-                </div>
-            </li>
-            <li *ngIf="authService.isSuperAdmin()" class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Super Admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/admin/category">Beheer alle vacatures</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link" routerLink="/login">Login</a>
-            </li>
-            <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link" routerLink="/register">Register</a>
-            </li>
-            <li *ngIf="authService.isLoggedIn()" class="nav-item" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link" routerLink="/logout">Logout</a>
-            </li>
-        </ul>
+            <ul class="navbar-nav ml-auto">
+                <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+                <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link" routerLink="/register">Register</a>
+                </li>
+
+                <li *ngIf="authService.isLoggedIn()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ authService.loggedInGreeting() }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/admin/profile">Profile</a>
+                        <a *ngIf="authService.isCompanyAdmin()" class="dropdown-item"
+                            routerLink="/admin/companyAdmin">Beheer
+                            uw
+                            vacatures</a>
+                        <a *ngIf="authService.isSuperAdmin()" class="dropdown-item"
+                            routerLink="/admin/superAdmin">Beheer
+                            alle vacatures</a>
+                        <a class="dropdown-item" routerLink="/logout">Logout</a>
+                    </div>
+
+                </li>
+
+
+            </ul>
+        </div>
     </div>
 </nav>

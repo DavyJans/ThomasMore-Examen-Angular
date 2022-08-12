@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vacancy } from '../vacancy/vacancy';
-import { VacancyService } from '../vacancy/vacancy.service';
+import { Vacancy } from '../vacancy';
+import { VacancyService } from '../vacancy.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-vacancy-list',
+  templateUrl: './vacancy-list.component.html',
+  styleUrls: ['./vacancy-list.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class VacancyListComponent implements OnInit {
 
   vacancies$: Observable<Vacancy[]> = new Observable<Vacancy[]>();
 

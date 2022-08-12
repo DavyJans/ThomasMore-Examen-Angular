@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { CompanyListComponent } from './company/company-list/company-list.component';
+import { AuthGuard } from './security/auth.guard';
 import { SecurityComponent } from './security/security/security.component';
-import { VacancyComponent } from './vacancy/vacancy.component';
-
+import { VacancyListComponent } from './vacancy/vacancy-list/vacancy-list.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'vacancies', component: VacancyComponent },
+  { path: '', component: VacancyListComponent },
+  { path: 'vacancies', component: VacancyListComponent },
+  { path: 'companies', component: CompanyListComponent },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canActivateChild: [AuthGuard] },
   { path: 'login', component: SecurityComponent },
   { path: 'register', component: SecurityComponent },
   { path: 'logout', component: SecurityComponent }

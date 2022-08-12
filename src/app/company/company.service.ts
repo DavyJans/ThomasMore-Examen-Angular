@@ -15,8 +15,8 @@ export class CompanyService {
     constructor(private httpClient: HttpClient, public authService: AuthService) {
     }
 
-    getCompanyById(id: number): Observable<Company> {
-        return this.httpClient.get<Company>("http://localhost:3000/companies/" + id);
+    getCompanies(): Observable<Company[]> {
+        return this.httpClient.get<Company[]>("https://portfolioapidjan.azurewebsites.net/companies/");
     }
 
 }

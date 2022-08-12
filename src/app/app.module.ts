@@ -1,20 +1,26 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from './shared/shared.module';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { SharedModule } from './shared/shared.module';
+
 import { MenuComponent } from './menu/menu.component';
 import { SecurityModule } from "./security/security.module";
 import { VacancyModule } from './vacancy/vacancy.module';
-import { NgModule } from '@angular/core';
 import { CompanyModule } from './company/company.module';
+
+import { AuthGuard } from './security/auth.guard';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     MenuComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,7 @@ import { CompanyModule } from './company/company.module';
     VacancyModule,
     CompanyModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

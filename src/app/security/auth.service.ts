@@ -19,9 +19,6 @@ export class AuthService {
 
   getUser(): User | null {
     if (this.isLoggedIn()) {
-
-
-
       return {
         id: parseInt(localStorage.getItem('id') ?? '0'),
         userName: localStorage.getItem('userName') ?? '',
@@ -42,6 +39,10 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  loggedInGreeting(): string {
+    return `${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`;
   }
 
   isSuperAdmin(): boolean {
