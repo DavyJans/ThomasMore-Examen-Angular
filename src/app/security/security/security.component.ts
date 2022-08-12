@@ -13,7 +13,7 @@ import { Role } from '../role';
 export class SecurityComponent implements OnInit {
 
 
-  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, email: '', password: '', token: '' };
+  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, userName: '', password: '', token: '' };
 
   isSubmitted: boolean = false;
   errorMessage: string = '';
@@ -59,8 +59,8 @@ export class SecurityComponent implements OnInit {
         //   user: User = { id: 0, firstName: '', lastName: '', username: '', role: Role.Guest ,email: '', password: '', token: '' };
         localStorage.setItem('token', result.token);
         localStorage.setItem('id', result.user.id.toString());
-        localStorage.setItem('email', result.user.email);
-        localStorage.setItem('role', result.user.role);
+        localStorage.setItem('userName', result.user.userName);
+        localStorage.setItem('role', JSON.stringify(result.user.role));
         localStorage.setItem('firstName', result.user.firstName);
         localStorage.setItem('lastName', result.user.lastName);
 
@@ -70,7 +70,22 @@ export class SecurityComponent implements OnInit {
         this.isSubmitted = false;
       });
     } else {
-      alert('work in progress');
+      this.authService.register(this.user).subscribe(result => {
+        this.errorMessage = '';
+        // save access token localstorage
+        //   user: User = { id: 0, firstName: '', lastName: '', username: '', role: Role.Guest ,email: '', password: '', token: '' };
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('id', result.user.id.toString());
+        localStorage.setItem('userName', result.user.userName);
+        localStorage.setItem('role', JSON.stringify(result.user.role));
+        localStorage.setItem('firstName', result.user.firstName);
+        localStorage.setItem('lastName', result.user.lastName);
+
+        this.router.navigate(['']);
+      }, error => {
+        this.errorMessage = 'Registration failed';
+        this.isSubmitted = false;
+      });
     }
   }
 }

@@ -4,8 +4,17 @@
 </div>
 <form (ngSubmit)="onSubmit()" #authForm="ngForm">
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" class="form-control" [(ngModel)]="user.email" required email>
+        <label for="firstname">First name</label>
+        <input type="text" name="firstname" id="firstname" class="form-control" [(ngModel)]="user.firstName">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastName" id="lastName" class="form-control" [(ngModel)]="user.lastName">
+    </div>
+    <div class="form-group">
+        <label for="userName">User Name (e-mail)</label>
+        <input type="email" name="userName" id="userName" class="form-control" [(ngModel)]="user.userName" required
+            email>
     </div>
     <div class="form-group mb-4">
         <label for="password">Password</label>

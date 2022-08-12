@@ -19,14 +19,17 @@ export class AuthService {
 
   getUser(): User | null {
     if (this.isLoggedIn()) {
+
+
+
       return {
         id: parseInt(localStorage.getItem('id') ?? '0'),
-        email: localStorage.getItem('email') ?? '',
+        userName: localStorage.getItem('userName') ?? '',
         password: '',
         token: this.getToken(),
         firstName: localStorage.getItem('firstName') ?? '',
         lastName: localStorage.getItem('lastName') ?? '',
-        role: <Role>localStorage.getItem('role') ?? Role.Guest
+        role: +localStorage.getItem('role')! ?? Role.Guest
       };
     } else {
       return null;
@@ -42,21 +45,21 @@ export class AuthService {
   }
 
   isSuperAdmin(): boolean {
-    let role = <Role>localStorage.getItem('role');
+    let role = +localStorage.getItem('role')!;
     return this.isLoggedIn() && role == Role.SuperAdmin
   }
 
   isCompanyAdmin(): boolean {
-    let role = <Role>localStorage.getItem('role');
+    let role = +localStorage.getItem('role')!;
     return this.isLoggedIn() && role == Role.CompanyAdmin
   }
 
 
   authenticate(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>('https://localhost:44373/users/authenticate', user);
+    return this.httpClient.post<UserResponse>('https://portfolioapidjan.azurewebsites.net/users/authenticate', user);
   }
 
   register(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>('http://localhost:3000/register', user);
+    return this.httpClient.post<UserResponse>('https://portfolioapidjan.azurewebsites.net/users/register', user);
   }
 }

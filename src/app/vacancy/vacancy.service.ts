@@ -16,7 +16,7 @@ export class VacancyService {
     }
 
     getVacancies(): Observable<Vacancy[]> {
-        return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://localhost:44373/vacancies")));
+        return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://portfolioapidjan.azurewebsites.net/vacancies")));
     }
 
 
