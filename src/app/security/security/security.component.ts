@@ -57,7 +57,7 @@ export class SecurityComponent implements OnInit {
         this.errorMessage = '';
         // save access token localstorage
         //   user: User = { id: 0, firstName: '', lastName: '', username: '', role: Role.Guest ,email: '', password: '', token: '' };
-        localStorage.setItem('token', result.accessToken);
+        localStorage.setItem('token', result.token);
         localStorage.setItem('id', result.user.id.toString());
         localStorage.setItem('email', result.user.email);
         localStorage.setItem('role', result.user.role);
