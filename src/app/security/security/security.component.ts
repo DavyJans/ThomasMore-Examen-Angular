@@ -13,7 +13,7 @@ import { Role } from '../role';
 export class SecurityComponent implements OnInit {
 
 
-  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, userName: '', password: '', token: '', city: '', street: '' };
+  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, userName: '', password: '', token: '', city: '', street: '', imageUrl: '' };
 
   isSubmitted: boolean = false;
   errorMessage: string = '';
@@ -65,6 +65,7 @@ export class SecurityComponent implements OnInit {
         localStorage.setItem('lastName', result.user.lastName);
         localStorage.setItem('street', result.user.street);
         localStorage.setItem('city', result.user.city);
+        localStorage.setItem('imageUrl', result.user.imageUrl);
 
         this.router.navigate(['']);
       }, error => {

@@ -1,4 +1,4 @@
-<article class="card m-3" style="width: 20rem" *ngIf="vacancy && isActive">
+<article class="card m-3" style="width: 20rem" *ngIf="vacancy">
   <div class="card-header text-white bg-info">
     <h5 class="card-title">{{vacancy.functionTitle}}</h5>
   </div>
@@ -15,7 +15,7 @@
       <div *ngSwitchCase="daysLeft > 1">Nog {{ daysLeft }} dagen om te solliciteren!</div>
     </div>
 
-    <p>Actief? {{ isActive }}</p>
+    <!-- <p>Actief? {{ isActive }}</p> -->
 
   </div>
   <div class="card-footer">

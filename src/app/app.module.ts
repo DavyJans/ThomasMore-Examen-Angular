@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,8 +11,10 @@ import { MenuComponent } from './menu/menu.component';
 import { SecurityModule } from "./security/security.module";
 import { VacancyModule } from './vacancy/vacancy.module';
 import { CompanyModule } from './company/company.module';
-
+import { environment } from '../environments/environment';
 import { AuthGuard } from './security/auth.guard';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 
 
@@ -28,7 +31,9 @@ import { AuthGuard } from './security/auth.guard';
     SecurityModule,
     SharedModule,
     VacancyModule,
-    CompanyModule
+    CompanyModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

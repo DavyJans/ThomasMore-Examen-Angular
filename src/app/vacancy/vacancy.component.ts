@@ -13,8 +13,6 @@ export class VacancyComponent implements OnInit {
   today: Date = new Date();
   deadline: Date = new Date();
 
-  testDateString: string = '08/21/2022';
-
   daysLeft: number = 0;
   isActive: boolean = true;
 
@@ -43,9 +41,7 @@ export class VacancyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let testDate = new Date(this.testDateString);
-    //this.deadline = new Date(this.vacancy.publishDate);
-    this.deadline = testDate;
+
 
     let dateDifference = this.deadline.getTime() - this.today.getTime();
     this.daysLeft = Math.floor(dateDifference / (1000 * 3600 * 24)) + 1;

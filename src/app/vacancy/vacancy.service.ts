@@ -16,15 +16,37 @@ export class VacancyService {
   constructor(private httpClient: HttpClient, public authService: AuthService) {
   }
 
-  getVacancies(): Observable<Vacancy[]> {
 
-    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://portfolioapidjan.azurewebsites.net/vacancies")));
+
+  getVacancies(): Observable<Vacancy[]> {
+    let date = new Date();
+    date.getDay
+    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://portfolioapidjan.azurewebsites.net/vacancies"))).pipe(
+      map(results => results.filter(result => {
+
+        let closingDate = new Date(result.closingDate);
+        let today = new Date()
+
+        return closingDate > today;
+
+      })
+      ));
 
   }
 
   getVacanciesByCompany(companyId: number): Observable<Vacancy[]> {
+    let today = new Date();
+    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://portfolioapidjan.azurewebsites.net/vacancies/ByCompanyId?id=" + companyId))).pipe(
+      map(results => results.filter(result => {
 
-    return timer(1, 3000).pipe(switchMap(() => this.httpClient.get<Vacancy[]>("https://portfolioapidjan.azurewebsites.net/vacancies/ByCompanyId?id=" + companyId)));
+        let closingDate = new Date(result.closingDate);
+        let today = new Date()
+
+
+        return closingDate > today;
+
+      })
+      ));
 
   }
 

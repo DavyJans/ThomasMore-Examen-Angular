@@ -28,7 +28,8 @@ export class AuthService {
         lastName: localStorage.getItem('lastName') ?? '',
         role: +localStorage.getItem('role')! ?? Role.Guest,
         city: localStorage.getItem('city') ?? '',
-        street: localStorage.getItem('street') ?? ''
+        street: localStorage.getItem('street') ?? '',
+        imageUrl: localStorage.getItem('imageUrl') ?? ''
       };
     } else {
       return null;

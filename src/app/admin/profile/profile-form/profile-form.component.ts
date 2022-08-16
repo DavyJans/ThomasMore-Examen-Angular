@@ -6,6 +6,7 @@ import { Role } from 'src/app/security/role';
 import { AuthService } from 'src/app/security/auth.service';
 import { Router } from '@angular/router';
 import { delay } from 'rxjs/operators';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -19,13 +20,23 @@ export class ProfileFormComponent implements OnInit {
   roles = Role;
   selectedValue: number;
   message: string = '';
+  isImageChanged: boolean = false;
+  imageUrl: string;
+  isSaving: boolean = false;
 
-  constructor(private profileService: ProfileService, private authService: AuthService, private router: Router) {
+  constructor(private profileService: ProfileService, private authService: AuthService, private router: Router, private angularFireStorage: AngularFireStorage) {
     this.keys = Object.keys(this.roles).filter(k => !isNaN(Number(k))).map(Number);
 
   }
 
   user: User | null;
+
+  // Uploading image
+  ref: AngularFireStorageReference | undefined;
+  task: AngularFireUploadTask | undefined;
+  filePath = `pictures/`;
+  imageFile: any;
+  uploadProgress: number | undefined;
 
   ngOnInit(): void {
 
@@ -34,11 +45,45 @@ export class ProfileFormComponent implements OnInit {
 
   }
 
-  saveChanges(): void {
-    console.log(JSON.stringify(this.user));
+  onImageSelected(event: any): void {
+    // create a random id
+    const randomId = Math.random().toString(36).substring(2);
+    this.filePath += randomId;
+    // create a reference to the storage bucket location
+    this.ref = this.angularFireStorage.ref(this.filePath);
+    this.imageFile = event.target.files[0];
+    this.isImageChanged = true;
+  }
 
+
+
+  saveChanges(): void {
+
+
+    if (this.isImageChanged) {
+      this.isSaving = true
+      this.task = this.angularFireStorage.upload(this.filePath, this.imageFile);
+      this.task.snapshotChanges().subscribe(result => {
+        this.ref?.getDownloadURL().subscribe(url => {
+
+          this.user!.imageUrl = url;
+          console.log(url);
+          this.saveData();
+
+        });
+      });
+
+      this.task.percentageChanges().subscribe(p => this.uploadProgress = p);
+    }
+    else {
+      this.saveData();
+    }
+
+
+  }
+
+  saveData() {
     this.profileService.updateUser(this.user).subscribe(result => {
-      console.log(result)
 
       localStorage.setItem('id', result.id.toString());
       localStorage.setItem('userName', result.userName);
@@ -47,10 +92,12 @@ export class ProfileFormComponent implements OnInit {
       localStorage.setItem('lastName', result.lastName);
       localStorage.setItem('street', result.street);
       localStorage.setItem('city', result.city);
+      localStorage.setItem('imageUrl', result.imageUrl);
 
       this.message = 'Changes saved! Redirected to homepage in few seconds.';
 
       setTimeout(() => {
+        this.isSaving = false;
         this.router.navigate(['']);
       }, 5000);
 

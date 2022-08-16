@@ -10,4 +10,5 @@ export interface User {
   token: string;
   street: string;
   city: string;
+  imageUrl: string;
 }
