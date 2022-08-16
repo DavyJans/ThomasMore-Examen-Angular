@@ -1,0 +1,37 @@
+.itemFull {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.itemHeader {
+  background: #dc3545;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px 0px 10px 0px;
+  margin-bottom: 20px;
+}
+
+.itemHeader h1 {
+  color: white;
+  padding-bottom: 20px;
+}
+
+.itemDetail {
+  //background: lightgoldenrodyellow;
+  text-align: left;
+  padding: 0px 20px 20px 40px;
+}
+
+.itemFacts {
+  //background: lightcoral;
+  line-height: 1.8;
+  font-size: 1em;
+}
+
+.itemSummary {
+  //background: lightgreen;
+}
+
+.focus {
+  font-weight: bold;
+  color: cornflowerblue;
+}

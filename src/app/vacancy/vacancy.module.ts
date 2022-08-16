@@ -6,6 +6,8 @@ import { VacancyComponent } from './vacancy.component';
 // import { VacancyDetailComponent } from './vacancy-detail/vacancy-detail.component';
 // import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
+import { VacancyDetailComponent } from './vacancy-detail/vacancy-detail.component';
+import { VacancyFormComponent } from './vacancy-form/vacancy-form.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
     VacancyComponent,
     // VacancyDetailComponent,
     // VacancyFormComponent,
-    VacancyListComponent
+    VacancyListComponent,
+    VacancyDetailComponent,
+    VacancyFormComponent
   ],
   imports: [
     SharedModule

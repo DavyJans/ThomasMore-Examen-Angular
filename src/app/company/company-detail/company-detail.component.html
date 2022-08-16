@@ -1,0 +1,23 @@
+<div class="container text-center" *ngIf="company">
+  <!--<div class="container text-center">-->
+  <div class="itemFull">
+    <div class="itemHeader">
+      <h1>{{ company.name }} </h1>
+    </div>
+    <div class="row itemDetail">
+      <div class=" col-4 itemFacts">
+        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-fluid rounded-start" alt="...">
+      </div>
+
+      <div class="col-8 itemSummary">
+        <p><i class="fa-solid fa-industry"></i>>Smartbyte bv
+          <br><i class="fa-regular fa-compass"></i> Leuven
+          <br>Aantal vacatures: {{ company.vacancies.length }}
+          <button type="button" class="btn btn-outline-danger btn-sm" *ngIf="company.vacancies.length > 0"
+            (click)="listVacancies(company.id)">Show
+            vacancies</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

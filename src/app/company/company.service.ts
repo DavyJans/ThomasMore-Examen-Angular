@@ -19,4 +19,8 @@ export class CompanyService {
         return this.httpClient.get<Company[]>("https://portfolioapidjan.azurewebsites.net/companies/");
     }
 
+    getCompanyById(id: number): Observable<Company> {
+    return this.httpClient.get<Company>('https://portfolioapidjan.azurewebsites.net/companies/' + id);
+    }
+
 }

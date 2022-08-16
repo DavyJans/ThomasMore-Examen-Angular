@@ -1,5 +1,4 @@
 <div class="row">
-
-    <app-vacancy class="col-lg-12 mb-3" *ngFor="let vacancy of (vacancies$ | async)" [vacancy]="vacancy">
+    <app-vacancy class="col-sm-12 col-md-12, col-lg-6, col-xl-4 d-flex flex-row justify-content-center align-items-stretch" *ngFor="let vacancy of (vacancies$ | async)" [vacancy]="vacancy">
     </app-vacancy>
 </div>

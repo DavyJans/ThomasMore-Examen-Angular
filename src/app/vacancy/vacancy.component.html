@@ -1,24 +1,24 @@
-<article *ngIf="vacancy">
+<article class="card m-3" style="width: 20rem" *ngIf="vacancy && isActive">
+  <div class="card-header text-white bg-info">
+    <h5 class="card-title">{{vacancy.functionTitle}}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{vacancy.company.name}} | plaats</p>
+    <!-- <p class="card-text">Solliciteer tot: {{ vacancy.publishDate | date:'dd/MM/yyyy' }}</p> -->
+    <p class="card-text">Solliciteer tot: {{ deadline | date:'dd/MM/yyyy' }}</p>
+    <p>Vandaag is {{ today | date: 'dd/MM/yyyy' }}</p>
 
-    <h4>{{ vacancy.functionTitle }}</h4>
-    <span>Bedrijf: {{ vacancy.company.name }}</span>
-    <!-- <h4>{{ vacancy.jobDescriptionTitle }}</h4>
+    <div [ngSwitch]="true">
+      <div *ngSwitchCase="daysLeft < 0"><i>[Sollicitatie is afgesloten!</i></div>
+      <div *ngSwitchCase="daysLeft == 0">Solliciteer vandaag (laatste dag)!!</div>
+      <div *ngSwitchCase="daysLeft == 1">Nog {{ daysLeft }} dag om te solliciteren!</div>
+      <div *ngSwitchCase="daysLeft > 1">Nog {{ daysLeft }} dagen om te solliciteren!</div>
+    </div>
 
-        <p>
-            {{ vacancy.jobDescriptionContent }}
-        </p>
-        <h4>Candidate Profile</h4>
-        <p>
-            {{ vacancy.profileContent }}
-        </p>
-        <h4>Offer</h4>
-        <p>
-            {{ vacancy.offerContent }}
-        </p>
+    <p>Actief? {{ isActive }}</p>
 
-        <footer>
-            <p>Author: {{ vacancy.author }}, Published: {{ vacancy.publishDate }}</p>
-            <p>Editor: {{ vacancy.editor }}</p>
-        </footer> -->
-
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-outline-info btn-sm" (click)="detail(vacancy.id)">Meer info....</button>
+  </div>
 </article>

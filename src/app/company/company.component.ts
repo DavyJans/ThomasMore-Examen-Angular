@@ -12,7 +12,8 @@ export class CompanyComponent implements OnInit {
 
   @Input() company: Company = {
     id: 0,
-    name: ""
+    name: "",
+    vacancies: []
   };
 
 
@@ -26,19 +27,8 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // detail(id: number) {
-  //   this.router.navigate(['/vacancy', id])
-  // }
-
-  /*
-  //simple goBack-script, where backRoute is defined in @Input-parameter; still fixed routing though!
-  goBack() {
-    this.router.navigate([this.backRoute])
-  }
-  */
-
-  goBack() {
-    this._location.back();
+  detail(id: number) {
+    this.router.navigate(['/company', id])
   }
 
 }

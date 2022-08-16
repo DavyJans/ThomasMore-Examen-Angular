@@ -10,6 +10,8 @@ export interface Vacancy {
     otherContent: string;
     author: string;
     publishDate: string;
+    closingDate: string;
+    location: string;
     editor: string;
     companyId: number;
     statusId: number;
