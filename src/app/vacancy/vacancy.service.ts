@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, timer } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import { AuthService } from "../security/auth.service";
+import { User } from '../security/user';
 
 
 @Injectable({
@@ -27,7 +28,16 @@ export class VacancyService {
 
   }
 
+  apply(user: User, id: number): Observable<User> {
 
+    let body = {
+      user,
+      id
+    }
+
+    return this.httpClient.post<User>("https://portfolioapidjan.azurewebsites.net/vacancies/apply/", body)
+
+  }
 
   getVacancyById(id: number): Observable<Vacancy> {
     return this.httpClient.get<Vacancy>("https://portfolioapidjan.azurewebsites.net/vacancies/" + id);

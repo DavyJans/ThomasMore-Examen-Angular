@@ -13,7 +13,10 @@ export class CompanyComponent implements OnInit {
   @Input() company: Company = {
     id: 0,
     name: "",
-    vacancies: []
+    vacancies: [],
+    city: "",
+    pictureUrl: "",
+    street: ""
   };
 
 

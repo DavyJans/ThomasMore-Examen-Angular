@@ -10,8 +10,19 @@
       </div>
 
       <div class="col-8 itemSummary">
-        <p><i class="fa-solid fa-industry"></i>>Smartbyte bv
-          <br><i class="fa-regular fa-compass"></i> Leuven
+        <p><i class="fa-solid fa-industry"></i>{{company.name}}</p>
+        <table>
+          <tr>
+            <td><i class="fa-regular fa-compass"></i></td>
+            <td>{{company.street}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{company.city}}</td>
+          </tr>
+        </table>
+
+        <p>
           <br>Aantal vacatures: {{ company.vacancies.length }}
           <button type="button" class="btn btn-outline-danger btn-sm" *ngIf="company.vacancies.length > 0"
             (click)="listVacancies(company.id)">Show

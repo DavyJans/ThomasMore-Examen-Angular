@@ -13,8 +13,11 @@ import { Company } from "../company";
 export class CompanyDetailComponent implements OnInit {
   company: Company = {
     id: 0,
-    name: '',
-    vacancies: []
+    name: "",
+    vacancies: [],
+    city: "",
+    pictureUrl: "",
+    street: ""
   };
   //numVac: number = 3;
 

@@ -34,7 +34,7 @@ export class VacancyComponent implements OnInit {
     companyId: 1,
     statusId: 1,
     authorId: 1,
-    company: { id: 0, name: '', vacancies: [] }
+    company: { id: 0, name: "", vacancies: [], city: "", pictureUrl: "", street: "" }
   };
 
   @Input() isDetail: boolean = false;
