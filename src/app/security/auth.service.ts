@@ -26,7 +26,9 @@ export class AuthService {
         token: this.getToken(),
         firstName: localStorage.getItem('firstName') ?? '',
         lastName: localStorage.getItem('lastName') ?? '',
-        role: +localStorage.getItem('role')! ?? Role.Guest
+        role: +localStorage.getItem('role')! ?? Role.Guest,
+        city: localStorage.getItem('city') ?? '',
+        street: localStorage.getItem('street') ?? ''
       };
     } else {
       return null;

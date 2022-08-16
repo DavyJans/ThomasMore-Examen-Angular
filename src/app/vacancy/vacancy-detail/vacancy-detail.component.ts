@@ -32,7 +32,7 @@ export class VacancyDetailComponent implements OnInit {
   }
 
 
-  constructor(private vacancyService: VacancyService, private route: ActivatedRoute, private authService: AuthService,) { }
+  constructor(private vacancyService: VacancyService, private route: ActivatedRoute, private authService: AuthService) { }
 
   message: string = '';
 

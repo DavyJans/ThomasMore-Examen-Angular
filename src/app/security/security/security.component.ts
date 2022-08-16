@@ -13,7 +13,7 @@ import { Role } from '../role';
 export class SecurityComponent implements OnInit {
 
 
-  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, userName: '', password: '', token: '' };
+  user: User = { id: 0, firstName: '', lastName: '', role: Role.Guest, userName: '', password: '', token: '', city: '', street: '' };
 
   isSubmitted: boolean = false;
   errorMessage: string = '';
@@ -63,6 +63,8 @@ export class SecurityComponent implements OnInit {
         localStorage.setItem('role', JSON.stringify(result.user.role));
         localStorage.setItem('firstName', result.user.firstName);
         localStorage.setItem('lastName', result.user.lastName);
+        localStorage.setItem('street', result.user.street);
+        localStorage.setItem('city', result.user.city);
 
         this.router.navigate(['']);
       }, error => {
@@ -80,6 +82,8 @@ export class SecurityComponent implements OnInit {
         localStorage.setItem('role', JSON.stringify(result.user.role));
         localStorage.setItem('firstName', result.user.firstName);
         localStorage.setItem('lastName', result.user.lastName);
+        localStorage.setItem('street', result.user.street);
+        localStorage.setItem('city', result.user.city);
 
         this.router.navigate(['']);
       }, error => {

@@ -8,4 +8,6 @@ export interface User {
   userName: string;
   password: string;
   token: string;
+  street: string;
+  city: string;
 }
