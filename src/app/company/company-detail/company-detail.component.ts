@@ -19,14 +19,30 @@ export class CompanyDetailComponent implements OnInit {
     pictureUrl: "",
     street: ""
   };
-  //numVac: number = 3;
+
+  numberOfVacancies: number = 0;
+
 
   constructor(private companyService: CompanyService, private activatedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const companyId = this.activatedRouter.snapshot.paramMap.get('id');
     if (companyId != null) {
-      this.companyService.getCompanyById(+companyId).subscribe(result => this.company = result);
+      this.companyService.getCompanyById(+companyId).subscribe(result => {
+
+        this.company = result;
+
+        this.numberOfVacancies = result.vacancies.filter(result => {
+
+          let closingDate = new Date(result.closingDate);
+          let today = new Date()
+
+
+          return closingDate > today;
+
+        }).length;
+
+      });
     }
   }
 

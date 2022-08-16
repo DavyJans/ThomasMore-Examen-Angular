@@ -6,7 +6,8 @@
     </div>
     <div class="row itemDetail">
       <div class=" col-4 itemFacts">
-        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-fluid rounded-start" alt="...">
+        <img [src]="company.pictureUrl" class="img-fluid rounded-start" alt="...">
+        <!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-fluid rounded-start" alt="..."> -->
       </div>
 
       <div class="col-8 itemSummary">
@@ -23,7 +24,7 @@
         </table>
 
         <p>
-          <br>Aantal vacatures: {{ company.vacancies.length }}
+          <br>Aantal vacatures: {{ numberOfVacancies }}
           <button type="button" class="btn btn-outline-danger btn-sm" *ngIf="company.vacancies.length > 0"
             (click)="listVacancies(company.id)">Show
             vacancies</button>

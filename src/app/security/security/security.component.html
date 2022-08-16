@@ -3,11 +3,11 @@
     {{errorMessage}}
 </div>
 <form (ngSubmit)="onSubmit()" #authForm="ngForm">
-    <div class="form-group">
+    <div class="form-group" *ngIf="!isLogin">
         <label for="firstname">First name</label>
         <input type="text" name="firstname" id="firstname" class="form-control" [(ngModel)]="user.firstName">
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="!isLogin">
         <label for="lastname">Last name</label>
         <input type="text" name="lastName" id="lastName" class="form-control" [(ngModel)]="user.lastName">
     </div>

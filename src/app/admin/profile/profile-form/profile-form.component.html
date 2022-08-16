@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                         <select #roleSelection (change)='onRoleChange(+roleSelection.value)' [(ngModel)]="selectedValue"
-                            disabled="" class="custom-select">
+                            disabled="{{!enableRoleChange}}" class="custom-select">
                             <option *ngFor="let key of keys" [value]="key">
                                 {{roles[key]}}
                             </option>

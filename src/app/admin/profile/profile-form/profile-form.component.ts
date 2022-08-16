@@ -23,6 +23,7 @@ export class ProfileFormComponent implements OnInit {
   isImageChanged: boolean = false;
   imageUrl: string;
   isSaving: boolean = false;
+  enableRoleChange: boolean = false;
 
   constructor(private profileService: ProfileService, private authService: AuthService, private router: Router, private angularFireStorage: AngularFireStorage) {
     this.keys = Object.keys(this.roles).filter(k => !isNaN(Number(k))).map(Number);
@@ -42,6 +43,7 @@ export class ProfileFormComponent implements OnInit {
 
     this.user = this.profileService.getUser();
     this.selectedValue = this.user!.role;
+    this.enableRoleChange = this.authService.isSuperAdmin();
 
   }
 
